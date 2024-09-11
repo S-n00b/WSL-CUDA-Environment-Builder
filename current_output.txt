@@ -1,0 +1,63 @@
+PS C:\Users\sneubauer.ABLENETINC\CODE> python build_env_lib.py --config env_config_latest.txt
+INFO:__main__:Enabling passwordless sudo
+%sneubauer ALL=(ALL) NOPASSWD:ALL
+WARNING:__main__:No WSL distribution found with the name: Ubuntu
+INFO:__main__:Skipping backup as WSL distribution Ubuntu does not exist.
+INFO:__main__:No environments found in /mnt/wsl.localhost/Ubuntu/home/sneubauer/miniconda3/envs to back up.
+INFO:__main__:Removing old CUDA installations
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+Note, selecting 'cuda-drivers-fabricmanager-450' for glob 'cuda-*'
+Note, selecting 'cuda-drivers-fabricmanager-460' for glob 'cuda-*'
+Note, selecting 'cuda-drivers-fabricmanager-470' for glob 'cuda-*'
+Note, selecting 'cuda-drivers-fabricmanager-510' for glob 'cuda-*'
+Note, selecting 'cuda-drivers-fabricmanager-515' for glob 'cuda-*'
+Note, selecting 'cuda-drivers-fabricmanager-525' for glob 'cuda-*'
+Note, selecting 'cuda-drivers-fabricmanager-535' for glob 'cuda-*'
+Note, selecting 'cuda-drivers-fabricmanager-550' for glob 'cuda-*'
+Note, selecting 'cuda-drivers-fabricmanager' for glob 'cuda-*'
+Note, selecting 'cuda-license-10-1' for glob 'cuda-*'
+Note, selecting 'cuda-license-10-2' for glob 'cuda-*'
+Package 'cuda-license-10-1' is not installed, so not removed
+Package 'cuda-license-10-2' is not installed, so not removed
+Package 'cuda-drivers-fabricmanager-515' is not installed, so not removed
+Package 'cuda-drivers-fabricmanager-550' is not installed, so not removed
+Package 'cuda-drivers-fabricmanager-450' is not installed, so not removed
+Package 'cuda-drivers-fabricmanager-460' is not installed, so not removed
+Package 'cuda-drivers-fabricmanager-470' is not installed, so not removed
+Package 'cuda-drivers-fabricmanager-510' is not installed, so not removed
+Package 'cuda-drivers-fabricmanager-525' is not installed, so not removed
+Package 'cuda-drivers-fabricmanager-535' is not installed, so not removed
+0 upgraded, 0 newly installed, 0 to remove and 52 not upgraded.
+INFO:__main__:Running autoremove
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+0 upgraded, 0 newly installed, 0 to remove and 52 not upgraded.
+INFO:__main__:Cleaning up
+INFO:__main__:Changing directory to: /home/sneubauer/code
+INFO:__main__:Removing old CUDA symlinks
+INFO:__main__:Creating new CUDA symlink
+INFO:__main__:Configuring WSL memory
+'sudo' is not recognized as an internal or external command,
+operable program or batch file.
+ERROR:__main__:Command failed: wsl -d Ubuntu bash -c 'echo "[wsl2]" | sudo tee -a /etc/wsl.conf' with error: Command 'wsl -d Ubuntu bash -c 'echo "[wsl2]" | sudo tee -a /etc/wsl.conf'' returned non-zero exit status 255.
+ERROR:__main__:Failed to configure WSL resources: Command 'wsl -d Ubuntu bash -c 'echo "[wsl2]" | sudo tee -a /etc/wsl.conf'' returned non-zero exit status 255.
+ERROR:__main__:Environment setup failed: Command 'wsl -d Ubuntu bash -c 'echo "[wsl2]" | sudo tee -a /etc/wsl.conf'' returned non-zero exit status 255.
+INFO:__main__:Attempting to revert to the last known good WSL environment...
+ERROR:__main__:No backups found to revert rapids_model_env
+ERROR:__main__:Failed to revert rapids_model_env to the backup: No backups found in C:\Users\sneubauer.ABLENETINC\CODE\wsl_backups
+ERROR:__main__:No backups found to revert rapids_model_env. Please troubleshoot the issue manually.
+Traceback (most recent call last):
+  File "C:\Users\sneubauer.ABLENETINC\CODE\build_env_lib.py", line 290, in <module>
+    build_env_lib("env_config_latest.txt")
+  File "C:\Users\sneubauer.ABLENETINC\CODE\build_env_lib.py", line 266, in build_env_lib
+    configure_wsl_resources(distro_name, memory, swap, gpu_scheduling)
+  File "C:\Users\sneubauer.ABLENETINC\CODE\build_env_lib.py", line 167, in configure_wsl_resources
+    execute_command(f"wsl -d {distro_name} bash -c 'echo \"[wsl2]\" | sudo tee -a /etc/wsl.conf'", "Configuring WSL memory")
+  File "C:\Users\sneubauer.ABLENETINC\CODE\build_env_lib.py", line 108, in execute_command
+    result.check_returncode()
+  File "C:\Users\sneubauer.ABLENETINC\AppData\Local\anaconda3\envs\prop_model_dev\lib\subprocess.py", line 457, in check_returncode
+    raise CalledProcessError(self.returncode, self.args, self.stdout,
+subprocess.CalledProcessError: Command 'wsl -d Ubuntu bash -c 'echo "[wsl2]" | sudo tee -a /etc/wsl.conf'' returned non-zero exit status 255.
